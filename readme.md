@@ -1,21 +1,22 @@
-Age Predictor Model
+Sign Language Translator
 
-This model is used to predict peoples ages based on their face. It is trained on an imagenet Resnet-18 model using transfer learning. The idea is that if the model overpredicts your age, you might have some sort of skin problems.
-
-![A computer analyzes a face.](https://imgur.com/HeyVfsW)
+This project uses a jetson nano and a USB camera to translate sign language. It will translate whatever sign you hold up into a aplhabet. 
 
 ## The Algorithm
-The algorithim is used by recording a video on a Logitech webcam - supported by Jetson nano. It uses a 2GB Jetson Nano, and so it uses it a preflashed SD card flashed from the NVIDIA webpage. It uses a facenet to find a persons face in the image, then it crops the image to just hold the face. It then sends the face to the transfer learning model. The transfer model then predicts your age. It will try to guess your age to the best of its abilities. Then it will print out the age is it is confident. It is up to the user to interepret the information.
-Note: I ran this model on a realivly low epoch with information that was askew. The pretrained model is quite inacurrate.
+Before I say anything, I have to say that I used the Nvidia template on Jupyter in order to make this project.
+The first thing I had to do was get a dataset. Instead of getting one from online, I decided to make my own! So I used the USB Logitech camera to take images of myself doing the hand signs. Since I had 85-100 photos for each letter and theres 26 letters in the alphabet the math adds up to somewhere around 2,450 images to train off of. Once I got the dataset, I used Pytorch to start training with image classification. Image classification uses convolutional networks to dilute it down to certain images which will then be compared with others and use patterns to decide what the prediction will be. This process took 7+ hours to train since theres a lot of photos meanwhile I'm using the nano. The final project will take the image your presenting in front the camera and will give the answer back into the prediction box. 
+
 ## Running this project
 
-1. Connect to your Jetson Nano via VSCODE. 
-2. Connect your Webcam (preferably logitech)
-3. Ensure that you have the proper things installed. The Renet18.onnx and all others like that - the ones that say resnet18.onnx and the final_project2.py. Also, esure that you have the labels.txt file.
-4. Since using teh preflashed SD card, there sould be a docker container. This is accesable by implementing this code. Change directories into jetson-inference/build/aarch64/bin. - use this code if your in the home.$ cd jetson-inference/build/aarch64/bin
-5. Then run this code -$ ./docker/run.sh --volume /home/(username)/final-projects:/final-projects        - the code moves the final-projects folder into the docker container so that the line from PIL import Image runs without an error.
-6a. The run the following code - $ python3 final_project2.py --network=facenet (webcam name here)
-6b. You should see a video popup of your face. Note how it is not a smooth stream of images. It should be a headshot of you and your face, and there should be some blakc space.
-7. The model is up and running, and so you should just put your face in clear view infront of the camera and watch as it tries to predict your age!
+1. Connect your USB webcam to your nano
+2. Then turn on the nano
+3. Enter the docker using the line ./docker_dli_run.sh, then enter your password.
+4. Once you've done that, a https website link should show up with a password for that site. Go to that website and enter the password.
+5. Next take the main file of this repo and download it.
+6. Upload the code file into the jupyter webite.
+7. To finish the setup you will need to click the run button which can be found above the tabs of code.
+8. Keep on clicking until you meet the line of text that says, "Before you go Shut down the camera and/or notebook kernel to release the camera resource."
+9. Scroll up to the new part with the camera output. There you should be ready to go once you click the "Live" button. 
+10. Put up some sign language and watch as the prediction tells you what letter of the alphabet your holding up.
 
-[View a video explanation here](video link)
+View the video demonstration here -----> (video link)
