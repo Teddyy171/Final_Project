@@ -19,4 +19,5 @@ The first thing I had to do was get a dataset. Instead of getting one from onlin
 9. Scroll up to the new part with the camera output. There you should be ready to go once you click the "Live" button. 
 10. Put up some sign language and watch as the prediction tells you what letter of the alphabet your holding up.
 
-View the video demonstration here -----> (video link)
+View the video demonstration here -----> https://www.youtube.com/watch?v=KBJOa-NzpOE
+
