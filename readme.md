@@ -1,4 +1,4 @@
-Sign Language Translator
+## Sign Language Translator
 
 This project uses a jetson nano and a USB camera to translate sign language. It will translate whatever sign you hold up into a aplhabet. 
 
